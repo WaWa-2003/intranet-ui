@@ -22,7 +22,7 @@ export const systemData: SystemCardData[] = [
         image: "/../images/orr-logo.png",
         description: "Handle external requests and reimbursements.",
         status: true, 
-        weblink: 'https://apps.powerapps.com/play/e/default-b8c84464-86e7-4d3a-8c4d-d5b1acce5b88/a/8d46995c-9848-46a9-9375-871abb517c04', 
+        weblink: "https://apps.powerapps.com/play/e/default-b8c84464-86e7-4d3a-8c4d-d5b1acce5b88/a/6ffec840-44c7-4ff8-94c2-6533d8eea02b?tenantId=b8c84464-86e7-4d3a-8c4d-d5b1acce5b88&hint=7063853e-2ce6-42d6-b883-b75aa401f1d3&sourcetime=1723800595420", 
     },
     {
         id: 3,
@@ -50,11 +50,11 @@ export const systemData: SystemCardData[] = [
     },
     {
         id: 6,
-        title: "Sample System Two",
+        title: "xendb",
         image: "/../images/maintenance-logo.png",
         description: "Track and manage maintenance tasks.",
         status: true, 
-        weblink: "https://forms.office.com/pages/responsepage.aspx?id=ZETIuOeGOk2MTdWxrM5biO-DvagkD4tPqliccLY3HWVUNjhUUUdRV0IwUTJINzI5UkZOVEUwMjZIWSQlQCN0PWcu", 
+        weblink: "https://xendb/", 
     },
     {
         id: 7,
