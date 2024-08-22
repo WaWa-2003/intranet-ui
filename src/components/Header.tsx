@@ -46,6 +46,7 @@ const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => 
         {accounts.length > 0 ? (
           <div>
             <span className="mr-2">{accounts[0].username}</span>
+            {/* <span className="mr-2">{accounts[0].displayname}</span> */}
             <button onClick={handleLogout} className="bg-red-500 text-white px-2 py-1 rounded">
               Logout
             </button>
