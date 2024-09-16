@@ -34,11 +34,11 @@ export const systemData: SystemCardData[] = [
     },
     {
         id: 4,
-        title: "Document Control System",
+        title: "Ship Rush",
         image: "/../images/docu-control-logo.png",
-        description: "Manage overtime requests efficiently.",
+        description: "Manage the products shipping efficiently.",
         status: true, 
-        weblink: "https://xenoptics.crm6.dynamics.com/main.aspx?appid=7e22bc49-af94-ee11-be37-000d3aca6cb5", 
+        weblink: "https://my.shiprush.com/Ship/Ship?shipSessionId=hvh5k4yd5k6FfAV6hnR1EA#shipmentgrid/pending", 
     },
     {
         id: 5,
@@ -58,6 +58,14 @@ export const systemData: SystemCardData[] = [
     },
     {
         id: 7,
+        title: "Document Control System", 
+        image: "/../images/maintenance-logo.png",
+        description: "Track and manage maintenance tasks.",
+        status: true, 
+        weblink: "https://forms.office.com/pages/responsepage.aspx?id=ZETIuOeGOk2MTdWxrM5biO-DvagkD4tPqliccLY3HWVUNjhUUUdRV0IwUTJINzI5UkZOVEUwMjZIWSQlQCN0PWcu", 
+    },
+    {
+        id: 8,
         title: "HR Training Forms", 
         image: "/../images/maintenance-logo.png",
         description: "Track and manage maintenance tasks.",

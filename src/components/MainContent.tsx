@@ -10,7 +10,7 @@ const MainContent: React.FC<MainContentProps> = ({ setCurrentPage }) => {
   return (
     <main className="flex-1 p-4">
       <h1 className="text-2xl mb-4">Intranet Systems</h1>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-4 gap-4">
         {systemData.map((system) => (
           <SystemCard
             key={system.id}
@@ -18,9 +18,12 @@ const MainContent: React.FC<MainContentProps> = ({ setCurrentPage }) => {
             image={system.image}
             description={system.description}
             setCurrentPage={setCurrentPage}
+            weblink={system.weblink}
+            openInNewTab={system.title === "Ship Rush" || system.title === "xendb"}
           />
         ))} 
       </div>
+      
     </main>
   );
 };
