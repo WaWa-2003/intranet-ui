@@ -35,7 +35,7 @@ export const systemData: SystemCardData[] = [
     {
         id: 4,
         title: "Ship Rush",
-        image: "/../images/docu-control-logo.png",
+        image: "/../images/ship-rush-logo.png",
         description: "Manage the products shipping efficiently.",
         status: true, 
         weblink: "https://my.shiprush.com/Ship/Ship?shipSessionId=hvh5k4yd5k6FfAV6hnR1EA#shipmentgrid/pending", 
@@ -51,7 +51,7 @@ export const systemData: SystemCardData[] = [
     {
         id: 6,
         title: "xendb",
-        image: "/../images/maintenance-logo.png",
+        image: "/../images/xendb-logo.png",
         description: "Track and manage maintenance tasks.",
         status: true, 
         weblink: "https://xendb/", 
@@ -59,7 +59,7 @@ export const systemData: SystemCardData[] = [
     {
         id: 7,
         title: "Document Control", 
-        image: "/../images/maintenance-logo.png",
+        image: "/../images/document-control-logo.png",
         description: "Track and manage maintenance tasks.",
         status: true, 
         weblink: "https://forms.office.com/pages/responsepage.aspx?id=ZETIuOeGOk2MTdWxrM5biO-DvagkD4tPqliccLY3HWVUNjhUUUdRV0IwUTJINzI5UkZOVEUwMjZIWSQlQCN0PWcu", 
@@ -67,7 +67,7 @@ export const systemData: SystemCardData[] = [
     {
         id: 8,
         title: "HR Training Forms", 
-        image: "/../images/maintenance-logo.png",
+        image: "/../images/hr-training-forms-logo.png",
         description: "Track and manage maintenance tasks.",
         status: true, 
         weblink: "https://forms.office.com/pages/responsepage.aspx?id=ZETIuOeGOk2MTdWxrM5biO-DvagkD4tPqliccLY3HWVUNjhUUUdRV0IwUTJINzI5UkZOVEUwMjZIWSQlQCN0PWcu", 
