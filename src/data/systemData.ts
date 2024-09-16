@@ -10,7 +10,7 @@ export interface SystemCardData {
 export const systemData: SystemCardData[] = [
     {
         id: 1,
-        title: "OT Request System",
+        title: "OT Request",
         image: "/../images/ot-logo.png",
         description: "Manage overtime requests efficiently.",
         status: true, 
@@ -18,7 +18,7 @@ export const systemData: SystemCardData[] = [
     }, 
     {
         id: 2,
-        title: "Outside Request & Reimbursement System",
+        title: "Outside & Reimburse",
         image: "/../images/orr-logo.png",
         description: "Handle external requests and reimbursements.",
         status: true, 
@@ -42,7 +42,7 @@ export const systemData: SystemCardData[] = [
     },
     {
         id: 5,
-        title: "Maintenance System",
+        title: "Maintenance",
         image: "/../images/maintenance-logo.png",
         description: "Handle external requests and reimbursements.",
         status: true, 
@@ -58,7 +58,7 @@ export const systemData: SystemCardData[] = [
     },
     {
         id: 7,
-        title: "Document Control System", 
+        title: "Document Control", 
         image: "/../images/maintenance-logo.png",
         description: "Track and manage maintenance tasks.",
         status: true, 

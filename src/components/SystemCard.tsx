@@ -12,7 +12,7 @@ interface SystemCardProps {
 const SystemCard: React.FC<SystemCardProps> = ({ 
   title, 
   image, 
-  description, 
+  // description, 
   setCurrentPage, 
   weblink, 
   openInNewTab = false 
@@ -22,7 +22,7 @@ const SystemCard: React.FC<SystemCardProps> = ({
       e.preventDefault();
       window.open(weblink, '_blank', 'noopener,noreferrer');
     } else {
-      setCurrentPage(title);
+      setCurrentPage(title); 
     }
   };
 
@@ -32,8 +32,8 @@ const SystemCard: React.FC<SystemCardProps> = ({
       onClick={handleClick}
     >
       <img src={image} alt={title} className="w-32 h-32 mb-2" />
-      <h2 className="text-lg font-semibold mb-2">{title}</h2>
-      <p className="text-sm text-center">{description}</p>
+      <h2 className="text-lg font-semibold mb-2 text-center w-full">{title}</h2>
+      {/* <p className="text-sm text-center">{description}</p> */}
     </div>
   );
 };
