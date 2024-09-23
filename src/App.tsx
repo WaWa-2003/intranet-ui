@@ -62,7 +62,7 @@ function App() {
         />
 
         <div className="flex flex-1">
-          {isSidebarOpen && <Sidebar setCurrentPage={updateCurrentPage} />}
+          {isSidebarOpen && <Sidebar setCurrentPage={updateCurrentPage} currentPage={currentPage} />}
           {renderContent()}
         </div>
       </div>
