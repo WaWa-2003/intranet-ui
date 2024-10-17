@@ -1,5 +1,5 @@
 import React from 'react';
-import { systemData } from "../data/systemData";
+import { systemData } from "../../intranet/data/systemData";
 
 interface SidebarProps {
   setCurrentPage: (page: string) => void;

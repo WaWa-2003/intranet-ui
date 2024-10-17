@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { useMsal, useAccount } from "@azure/msal-react";
-import { loginRequest } from "../auth/authConfig";
-import { callMsGraph } from "../auth/graph";
+import { loginRequest } from "../../auth/authConfig";
+import { callMsGraph } from "../../auth/graph";
 import { EventType } from "@azure/msal-browser";
 
 interface HeaderProps {

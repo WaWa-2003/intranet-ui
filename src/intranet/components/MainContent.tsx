@@ -1,6 +1,6 @@
 import React from "react";
 import SystemCard from './SystemCard';
-import { systemData } from "../data/systemData";
+import { systemData } from "../../intranet/data/systemData";
 
 interface MainContentProps {
   setCurrentPage: (page: string) => void;
