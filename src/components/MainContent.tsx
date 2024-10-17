@@ -9,7 +9,7 @@ interface MainContentProps {
 const MainContent: React.FC<MainContentProps> = ({ setCurrentPage }) => {
   return (
     <main className="flex-1 p-4">
-      <h1 className="text-2xl mb-4">Intranet Systems</h1>
+      <h1 className="text-2xl mb-4">Home</h1>
       <div className="grid grid-cols-4 gap-4">
         {systemData.map((system) => (
           <SystemCard

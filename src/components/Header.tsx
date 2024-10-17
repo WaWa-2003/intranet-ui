@@ -98,7 +98,7 @@ const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => 
           />
         </span>
         <span className="text-xl font-semibold ml-2 truncate">
-          {currentPage}
+          {currentPage === "Home" ? "Intranet System" : currentPage}
         </span>
       </div>
 

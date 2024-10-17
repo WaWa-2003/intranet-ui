@@ -20,9 +20,10 @@ const Sidebar: React.FC<SidebarProps> = ({ currentPage, setCurrentPage }) => {
       <nav>
         <ul>
           <li
-            className={`mb-2 cursor-pointer hover:text-blue-800 ${currentPage === 'Home' ? 'bg-blue-500' : ''}`}
+            className={`mb-2 flex items-center cursor-pointer hover:text-blue-800 ${currentPage === 'Home' ? 'bg-gray-300' : ''}`}
             onClick={() => setCurrentPage('Home')}
           >
+            <img src="/../images/xenoptics-logo.ico" alt="Home" className="w-6 h-6 mr-2" />
             Home
           </li>
           {
