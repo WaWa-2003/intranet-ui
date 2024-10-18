@@ -12,7 +12,6 @@ interface SystemCardProps {
 const SystemCard: React.FC<SystemCardProps> = ({ 
   title, 
   image, 
-  // description, 
   setCurrentPage, 
   weblink, 
   openInNewTab = false 
@@ -31,11 +30,10 @@ const SystemCard: React.FC<SystemCardProps> = ({
       className="border p-4 h-60 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100"
       onClick={handleClick}
     >
-      <img src={image} alt={title} className="w-32 h-32 mb-2" />
-      <h2 className="text-lg font-semibold mb-2 text-center w-full">{title}</h2>
-      {/* <p className="text-sm text-center">{description}</p> */}
+      <img src={image} alt={title} style={{ fill: 'blue' }} className="w-32 h-32 mb-2" />
+      <h2 className="text-lg font-semibold mb-2 text-center w-full">{title}</h2>     
     </div>
   );
 };
-
+                                                                                          
 export default SystemCard;
