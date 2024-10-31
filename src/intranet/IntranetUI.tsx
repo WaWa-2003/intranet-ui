@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar'
 import MainContent from './components/MainContent'
 import PowerAppEmbed from './components/PowerappsEmbed/PowerAppEmbed'
 import { systemData } from './data/systemData'
+import ShiprushApproval from '../ship-rush/ShiprushApproval';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -42,6 +43,10 @@ function IntranetUI() {
   const renderContent = () => {
     if (currentPage === 'Home') {
       return <MainContent setCurrentPage={updateCurrentPage} />;
+    }
+
+    if (currentPage === 'Shiprush Approval') {
+      return <ShiprushApproval/> 
     }
 
     const system = systemData.find(sys => sys.title === currentPage);

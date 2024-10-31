@@ -6,18 +6,22 @@ import { callMsGraph } from "../../auth/graph";
 import { EventType } from "@azure/msal-browser";
 
 interface HeaderProps {
-    currentPage: string;
-    setCurrentPage: (page: string) => void;
-    toggleSidebar: () => void;
-  }
-  
-  interface UserInfo {
-    displayName: string;
-    jobTitle: string;
-    mail: string;
-  }
-  
-const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => {
+  currentPage: string;
+  setCurrentPage: (page: string) => void;
+  toggleSidebar: () => void;
+}
+
+interface UserInfo {
+  displayName: string;
+  jobTitle: string;
+  mail: string;
+}
+
+const Header = ({
+  currentPage,
+  setCurrentPage,
+  toggleSidebar,
+}: HeaderProps) => {
   const { instance, accounts } = useMsal();
   const account = useAccount(accounts[0] || {});
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
@@ -28,11 +32,11 @@ const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => 
         try {
           const response = await instance.acquireTokenSilent({
             ...loginRequest,
-            account: account
+            account: account,
           });
           const graphData = await callMsGraph(response.accessToken);
           setUserInfo(graphData);
-          localStorage.setItem('userInfo', JSON.stringify(graphData));
+          localStorage.setItem("userInfo", JSON.stringify(graphData));
         } catch (error) {
           console.error("Error acquiring token:", error);
         }
@@ -51,12 +55,12 @@ const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => 
     const logoutHandler = instance.addEventCallback((event) => {
       if (event.eventType === EventType.LOGOUT_SUCCESS) {
         setUserInfo(null);
-        localStorage.removeItem('userInfo');
+        localStorage.removeItem("userInfo");
       }
     });
 
     // Check for existing userInfo in localStorage
-    const storedUserInfo = localStorage.getItem('userInfo');
+    const storedUserInfo = localStorage.getItem("userInfo");
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
     }
@@ -72,7 +76,7 @@ const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => 
   }, [instance, account]);
 
   const handleLogin = () => {
-    instance.loginPopup(loginRequest).catch(e => {
+    instance.loginPopup(loginRequest).catch((e) => {
       console.error(e);
     });
   };
@@ -87,14 +91,11 @@ const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => 
         <button onClick={toggleSidebar} className="text-xl mr-2">
           <FaBars />
         </button>
-        <span
-          className="cursor-pointer"
-          onClick={() => setCurrentPage("Home")}
-        >
-          <img 
-            src="/../images/xenoptics-logo.ico" 
-            alt="XenOptics Intranet" 
-            className="w-8 h-8" 
+        <span className="cursor-pointer" onClick={() => setCurrentPage("Home")}>
+          <img
+            src="/../images/xenoptics-logo.ico"
+            alt="XenOptics Intranet"
+            className="w-8 h-8"
           />
         </span>
         <span className="text-xl font-semibold ml-2 truncate">
@@ -110,12 +111,18 @@ const Header = ({ currentPage, setCurrentPage, toggleSidebar }: HeaderProps) => 
               <div className="text-sm text-gray-600">{userInfo.jobTitle}</div>
               <div className="text-sm text-gray-600">{userInfo.mail}</div>
             </div>
-            <button onClick={handleLogout} className="bg-red-500 text-white px-2 py-1 rounded">
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 text-white px-2 py-1 rounded"
+            >
               Logout
             </button>
           </div>
         ) : (
-          <button onClick={handleLogin} className="bg-blue-500 text-white px-2 py-1 rounded">
+          <button
+            onClick={handleLogin}
+            className="bg-blue-500 text-white px-2 py-1 rounded"
+          >
             Login
           </button>
         )}

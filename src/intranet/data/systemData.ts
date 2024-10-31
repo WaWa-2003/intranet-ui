@@ -72,5 +72,13 @@ export const systemData: SystemCardData[] = [
         status: true, 
         weblink: "https://forms.office.com/pages/responsepage.aspx?id=ZETIuOeGOk2MTdWxrM5biO-DvagkD4tPqliccLY3HWVUNjhUUUdRV0IwUTJINzI5UkZOVEUwMjZIWSQlQCN0PWcu", 
     },
+    {
+        id: 9,
+        title: "Shiprush Approval", 
+        image: "/../images/shipRush.svg", 
+        description: "Track and manage maintenance tasks.",
+        status: true, 
+        weblink: "", // want to show ShiprushApproval.tsx page when click 
+    },
 ];
 
