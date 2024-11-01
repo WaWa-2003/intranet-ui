@@ -7,6 +7,7 @@ export interface SystemCardData {
     weblink: string; 
 }
 
+
 export const systemData: SystemCardData[] = [
     {
         id: 1,
