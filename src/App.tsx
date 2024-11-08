@@ -1,6 +1,9 @@
 // import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import IntranetUI from './intranet/IntranetUI';
+import CardManager from './CRUD/components/CardManager';
+import CardCreate from './CRUD/components/CardCreate';
+import CardAllShow from './CRUD/components/CardAllShow';
 
 function App() {
   return (
@@ -8,7 +11,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/intranet" />} />
         <Route path="/intranet/*" element={<IntranetUI />} />
-        {/* Add more routes here if needed */}
+        <Route path="/intranet-systems-data/*" element={<CardManager />} />
+        <Route path="/intranet-systems-data/create" element={<CardCreate />} />
+        <Route path="/intranet-systems" element={<CardAllShow />} />
       </Routes>
     </Router>
   );
