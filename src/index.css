@@ -1,3 +1,182 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities; 
+
+/* Main container for the form */
+.fromCreate {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border: 1px solid #ddd; /* Border for distinction */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Form title styling */
+.fromCreate--title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text */
+}
+
+/* Body container */
+.fromCreate--body {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 16px; /* Space between items */
+}
+
+/* Full width for small screens */
+@media (max-width: 768px) {
+    .fromCreate--body {
+        grid-template-columns: 1fr; /* Stack items for smaller screens */
+    }
+}
+
+/* Individual form fields */
+.fromCreate--body--field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.fromCreate--body--field label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555; /* Medium gray text */
+    margin-bottom: 8px;
+}
+
+/* Input fields */
+.fromCreate--body--field input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+/* Input focus state */
+.fromCreate--body--field input:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Submit button */
+.fromCreate button {
+    grid-column: span 2; /* Button spans across both columns */
+    padding: 12px 20px;
+    background-color: #28a745; /* Green background */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover state */
+.fromCreate button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Button disabled state */
+.fromCreate button:disabled {
+    background-color: #6c757d; /* Gray when disabled */
+    cursor: not-allowed;
+}
+
+.fromData--list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .fromData--list {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Ensures three cards fit in a row */
+    min-width: 280px; /* Adjust for responsiveness */
+    padding: 16px;
+    margin: 8px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .fromData--list-p {
+    margin: 4px 0;
+  }
+  
+  .fromData--list .bold {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  @media (max-width: 900px) {
+    .fromData--list {
+      width: 45%; /* Two cards per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .fromData--list {
+      width: 90%; /* Single card per row on very small screens */
+    }
+  }
+/* from List   */
+
+.fromData--list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .fromData--list {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Ensures three cards fit in a row */
+    min-width: 280px; /* Adjust for responsiveness */
+    padding: 16px;
+    margin: 8px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .fromData--list-p {
+    margin: 4px 0;
+  }
+  
+  .fromData--list .bold {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  @media (max-width: 900px) {
+    .fromData--list {
+      width: 45%; /* Two cards per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .fromData--list {
+      width: 90%; /* Single card per row on very small screens */
+    }
+  }
+  

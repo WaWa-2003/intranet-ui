@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Card from "../data/card";
-
-const BASE_URL = "http://localhost:5000";
+import BASE_URL from "../../url/url";
 
 const CardCreate: React.FC = () => {
     const [newCard, setNewCard] = useState<Omit<Card, "id">>({
