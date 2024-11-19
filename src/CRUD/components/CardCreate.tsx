@@ -1,16 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
+import Card from "../data/card";
 
 const BASE_URL = "http://localhost:5000";
-
-interface Card {
-    id: number;
-    title: string;
-    image: string;
-    description: string;
-    status: boolean;
-    weblink: string;
-    imageLink: string;
-}
 
 const CardCreate: React.FC = () => {
     const [newCard, setNewCard] = useState<Omit<Card, "id">>({
