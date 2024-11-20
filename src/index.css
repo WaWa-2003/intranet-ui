@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities; 
 
-/* Main container for the form */
-.fromCreate {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f9fa; /* Light gray background */
-    border: 1px solid #ddd; /* Border for distinction */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
 /* Form title styling */
 .fromCreate--title {
     font-size: 24px;
@@ -89,16 +78,7 @@
 .fromCreate button:disabled {
     background-color: #6c757d; /* Gray when disabled */
     cursor: not-allowed;
-}
-
-.fromData--list-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    padding: 16px;
-  }
-  
+} 
   .fromData--list {
     background-color: #f9f9f9;
     border: 1px solid #ddd;

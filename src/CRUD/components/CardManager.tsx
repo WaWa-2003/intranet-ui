@@ -163,8 +163,7 @@ const CardManager: React.FC = () => {
         setSelectedImage(null);
     };
 
-    const updateCard = async () => {
-
+    const updateCard = async () => { 
 
         if (selectedImage) {
             await handleUpload();
@@ -204,9 +203,6 @@ const CardManager: React.FC = () => {
             if (!response.ok) {
                 throw new Error('Failed to update card');
             }
-
-
-
             // Reset form
             setEditingCard({
                 id:0, 

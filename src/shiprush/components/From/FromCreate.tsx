@@ -18,6 +18,7 @@ const FromCreate: React.FC = () => {
     });
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
     const addFromData = async () => {
         if (!newFromData.company || !newFromData.personName) {
@@ -65,11 +66,11 @@ const FromCreate: React.FC = () => {
         }
     }
 
-    return ( 
-        <div className="fromCreate">
-            <h1 className="fromCreate--title">Create New From Data</h1>
-            <div className="fromCreate--body">
-                <div className="fromCreate--body--field">
+    return (
+        <div className="max-w-[800px] h-fit my-5 mx-3 p-5 bg-gray-100 border border-gray-300 rounded-lg shadow-md text-center sticky top-5">
+            <h1 className="text-xl font-bold mb-5">Create New From Data</h1>
+            <div className="grid grid-cols-2 gap-4 text-left mb-2">  {/*  sm:grid-cols-1 */}
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Company
                     </label>
@@ -82,7 +83,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Person
                     </label>
@@ -95,7 +96,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Phone
                     </label>
@@ -108,7 +109,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Email Address
                     </label>
@@ -121,7 +122,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Address
                     </label>
@@ -134,7 +135,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         City
                     </label>
@@ -147,7 +148,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Zip
                     </label>
@@ -160,7 +161,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Country
                     </label>
@@ -173,7 +174,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Residential
                     </label>
@@ -186,7 +187,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         Tax ID
                     </label>
@@ -199,7 +200,7 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-                <div className="fromCreate--body--field">
+                <div className="flex flex-col">
                     <label htmlFor="">
                         EORI Destination
                     </label>
@@ -212,17 +213,15 @@ const FromCreate: React.FC = () => {
                         required
                     />
                 </div>
-
-                <button
-                    onClick={addFromData}
-                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-green-300 disabled:cursor-not-allowed"
-                    disabled={isSubmitting}
-                >
-                    {isSubmitting ? "Adding From Data..." : "Submit"}
-                </button>
-
             </div>
-        </div> 
+            <button
+                onClick={addFromData}
+                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-green-300 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
+            >
+                {isSubmitting ? "Adding From Data..." : "Submit"}
+            </button>
+        </div>
     )
 }
 

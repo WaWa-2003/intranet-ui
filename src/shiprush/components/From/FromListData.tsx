@@ -4,7 +4,6 @@ import BASE_URL from "../../../url/url";
 import FromList from "./FormList";
 
 const FromListData: React.FC = () => {
-
     const [fromList, setFromList] = useState<FromData[]>([]);
 
     useEffect(() => {
@@ -20,9 +19,13 @@ const FromListData: React.FC = () => {
                 console.error("Error fetching FromData: ", error);
                 alert("Failed to load FromData.");
             }
-        }; 
+        };
         fetchFromList();
-    }, []); 
+    }, []);
+
+    const handleDelete = (id: number) => {
+        setFromList((prevList) => prevList.filter((item) => item.id !== id));
+    };
 
     return (
         <div>
@@ -32,14 +35,14 @@ const FromListData: React.FC = () => {
             <div className="flex flex-wrap gap-2 justify-center"> 
                 {fromList.length > 0 ? (
                     fromList.map((something) => (
-                        <FromList key={something.id} {...something} />
+                        <FromList key={something.id} {...something} onDelete={handleDelete} />
                     ))
                 ) : (
                     <p>No data available</p>
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default FromListData; 
