@@ -20,23 +20,25 @@ const FromListData: React.FC = () => {
                 console.error("Error fetching FromData: ", error);
                 alert("Failed to load FromData.");
             }
-        };
-
+        }; 
         fetchFromList();
-    }, []);
-
+    }, []); 
 
     return (
-        <div className="flex flex-wrap gap-2 justify-center">
-            {fromList.length > 0 ? (
-                fromList.map((something) => (
-                    <FromList key={something.id} {...something} />
-                ))
-            ) : (
-                <p>No data available</p>
-            )}
+        <div>
+            <h2 className="text-center text-2xl font-semibold mb-1 mt-4">
+                From Data List
+            </h2>
+            <div className="flex flex-wrap gap-2 justify-center"> 
+                {fromList.length > 0 ? (
+                    fromList.map((something) => (
+                        <FromList key={something.id} {...something} />
+                    ))
+                ) : (
+                    <p>No data available</p>
+                )}
+            </div>
         </div>
-
     )
 }
 

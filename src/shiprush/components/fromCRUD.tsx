@@ -9,8 +9,7 @@ const FromCRUD: React.FC = () => {
                 <FromCreate /> 
             </div>
             
-            <div className="fromData--list-container">
-                              
+            <div className="fromData--list-container">                              
                 <FromListData />           
             </div>
         </div> 
