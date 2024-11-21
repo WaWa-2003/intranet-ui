@@ -11,27 +11,8 @@
     color: #333; /* Dark gray text */
 }
 
-/* Body container */
-.fromCreate--body {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    gap: 16px; /* Space between items */
-}
 
-/* Full width for small screens */
-@media (max-width: 768px) {
-    .fromCreate--body {
-        grid-template-columns: 1fr; /* Stack items for smaller screens */
-    }
-}
-
-/* Individual form fields */
-.fromCreate--body--field {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Labels */
+/* Labels */ 
 .fromCreate--body--field label {
     font-size: 14px;
     font-weight: bold;

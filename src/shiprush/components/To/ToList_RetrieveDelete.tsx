@@ -1,16 +1,16 @@
 import React from "react";
-import FromData from "../../data/FromData";
+import ToData from "../../data/ToData";
 import BASE_URL from "../../../url/url";
 
-interface FromListProps extends FromData {
+interface ToListProps extends ToData {
     onDelete: (id: number) => void;
-    startEditing: (fromData: FromData) => void;
+    startEditing: (toData: ToData) => void;
 }
 
-const FromList: React.FC<FromListProps> = (props) => {
-    const deleteFromData = async (id: number) => {
+const ToList_RetrieveDelete: React.FC<ToListProps> = (props) => {
+    const deleteToData = async (id: number) => {
         try {
-            const response = await fetch(`${BASE_URL}/shiprush/fromdata/${id}`, {
+            const response = await fetch(`${BASE_URL}/shiprush/toData/${id}`, {
                 method: "DELETE",
             });
 
@@ -25,41 +25,41 @@ const FromList: React.FC<FromListProps> = (props) => {
     };
 
     return (
-        <div className="fromData--list">
-            <p className="fromData--list-p">
+        <div className="Data--list">
+            <p className="Data--list-p">
                 <span className="bold">ID - </span> {props.id}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Company Name - </span> {props.company}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Person Name - </span> {props.personName}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Phone - </span> {props.phone}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Email Address - </span> {props.emailAddress}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Address - </span> {props.address}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">City - </span> {props.city}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">ZIP - </span> {props.zip}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Country - </span> {props.country}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Residential - </span> {props.residential}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">Tax ID - </span> {props.taxId}
             </p>
-            <p className="fromData--list-p">
+            <p className="Data--list-p">
                 <span className="bold">EORI Destination - </span> {props.eoriDestination}
             </p>
             <div className="flex gap-1">
@@ -73,7 +73,7 @@ const FromList: React.FC<FromListProps> = (props) => {
                     Edit
                 </button>
                 <button
-                    onClick={() => deleteFromData(props.id)}
+                    onClick={() => deleteToData(props.id)}
                     className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:bg-red-300 disabled:cursor-not-allowed"
                 >
                     Delete
@@ -83,4 +83,4 @@ const FromList: React.FC<FromListProps> = (props) => {
     );
 };
 
-export default FromList;
+export default ToList_RetrieveDelete;

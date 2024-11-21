@@ -5,7 +5,7 @@ import CardManager from './CRUD/components/CardManager';
 import CardCreate from './CRUD/components/CardCreate';
 import CardAllShow from './CRUD/components/CardAllShow';
 import ShiprushApproval from './ship-rush/ShiprushApproval';
-import FromCRUD from './shiprush/components/FromCRUD';
+import FromCRUD from './shiprush/components/From/FromCRUD';
 
 function App() {
   return (
@@ -17,7 +17,8 @@ function App() {
         <Route path="/intranet-systems-data/create" element={<CardCreate />} />
         <Route path="/intranet-systems" element={<CardAllShow />} />
         <Route path="/ShiprushApproval" element={<ShiprushApproval />} />
-        <Route path="/ShiprushApproval/from/create" element={<FromCRUD />} />
+        <Route path="/ShiprushApproval/from/" element={<FromCRUD />} />
+        <Route path="/ShiprushApproval/from/" element={<FromCRUD />} />
       </Routes>
     </Router>
   );
