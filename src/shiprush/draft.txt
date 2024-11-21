@@ -1,0 +1,44 @@
+---- requestor 
+
+-- request
+
+RequestorName
+ShipFromId
+ShipToId
+RemarkByRequestor
+
+status
+
+SupervisorId 
+
+RequestedDateTime 
+RequestedById (Name) 
+
+-- status ??? id and value 
+ 
+Pending -> Supervisor_Approved -> Logistic_Approved -> Shipping -> Shipped -> Done => End
+Pending -> Supervisor_Approved -> Logistic_Rejected => End 
+Pending -> Supervisor_Rejected => End 
+
+-- RequestStatusHistory
+id 
+status
+ModifiedBy (Id) 
+ModifiedDateTime
+
+
+---- supervisor 
+
+---- logistic 
+
+-- user
+UserId
+UserName
+UserPosition
+UserDepartment 
+UserMail 
+
+CreatedByUserId
+CreatedDateTime 
+
+

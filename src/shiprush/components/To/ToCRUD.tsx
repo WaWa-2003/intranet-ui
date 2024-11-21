@@ -11,7 +11,7 @@ const ToListData: React.FC = () => {
     useEffect(() => {
         const fetchToList = async () => {
             try {
-                const response = await fetch(`${BASE_URL}/shiprush/fromdata`);
+                const response = await fetch(`${BASE_URL}/shiprush/todata`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch ToData");
                 }
@@ -41,7 +41,7 @@ const ToListData: React.FC = () => {
 
     const refreshToList = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/shiprush/fromdata`);
+            const response = await fetch(`${BASE_URL}/shiprush/todata`);
             if (!response.ok) {
                 throw new Error("Failed to fetch ToData");
             }
