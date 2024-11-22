@@ -3,20 +3,20 @@
 -- request
 
 RequestorName
-ShipFromId
-ShipToId
+FromId
+ToId
 RemarkByRequestor
 
-status
+status string
 
 SupervisorId 
 
 RequestedDateTime 
-RequestedById (Name) 
+RequestedById 
 
 -- status ??? id and value 
  
-Pending -> Supervisor_Approved -> Logistic_Approved -> Shipping -> Shipped -> Done => End
+Pending -> Supervisor_Approved -> Logistic_Approved -> Shipping -> Shipped -> Done => End 
 Pending -> Supervisor_Approved -> Logistic_Rejected => End 
 Pending -> Supervisor_Rejected => End 
 
@@ -25,7 +25,6 @@ id
 status
 ModifiedBy (Id) 
 ModifiedDateTime
-
 
 ---- supervisor 
 
