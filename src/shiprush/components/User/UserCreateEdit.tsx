@@ -20,6 +20,22 @@ const UserCreateEdit: React.FC<UserCreateEditProps> = ({
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); 
 
+    const addUserData = async () => {
+        if(!newUserData.name || !newUserData.position || !newUserData.department || !newUserData.email) {
+            alert("Please fill in all the required fields.");
+            return; 
+        }
+
+        setIsSubmitting(true); 
+
+        try {
+            const 
+        } catch (error) {
+            
+        } finally {
+
+        }
+    }
 }
 
 export default UserCreateEdit; 
