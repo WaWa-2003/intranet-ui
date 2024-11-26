@@ -5,4 +5,10 @@ export default interface PackageData {
     weightUnitType: string;
     declaredValue: number;
     currency: string;
+    height: number;
+    heightUnitType: string;
+    width: number;
+    widthUnitType: string;
+    length: number;
+    lengthUnitType: string;
 }

@@ -7,7 +7,7 @@ interface ToListProps extends UserData {
     startEditing: (toData: UserData) => void;
 }
 
-const ToList_RetrieveDelete: React.FC<ToListProps> = (props) => {
+const UserList_RetrieveDelete: React.FC<ToListProps> = (props) => {
     const deleteUserData = async (id: number) => {
         try {
             const response = await fetch(`${BASE_URL}/shiprush/toData/${id}`, {
@@ -60,4 +60,4 @@ const ToList_RetrieveDelete: React.FC<ToListProps> = (props) => {
     );
 };
 
-export default ToList_RetrieveDelete;
+export default UserList_RetrieveDelete;
