@@ -3,6 +3,7 @@ import UserCRUD from "./components/User/UserCRUD";
 import ToCRUD from "./components/To/ToCRUD";
 import FromCRUD from "./components/From/FromCRUD";
 import PackageCRUD from "./components/Package/PackageCRUD";  // Import PackageCRUD
+import RequestCRUD from "./business_steps/Requestor/RequestCRUD";
 
 function ShipRushUI() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -22,6 +23,8 @@ function ShipRushUI() {
                 return <FromCRUD />;    
             case "Package":
                 return <PackageCRUD />;  // Add PackageCRUD to render
+            case "Request":
+                return <RequestCRUD />;
             default:
                 return <div>Select a tab from the sidebar</div>;
         }
@@ -47,7 +50,7 @@ function ShipRushUI() {
                     </button>
                 </div>
                 <ul className="list-none p-0">
-                    {["User", "To", "From", "Package"].map((tab) => ( 
+                    {["User", "To", "From", "Package", "Request"].map((tab) => ( 
                         <li
                             key={tab}
                             onClick={() => setActiveTab(tab)}

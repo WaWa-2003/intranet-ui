@@ -1,6 +1,7 @@
 import React from "react";
 import ToData from "../../data/ToData";
-import BASE_URL from "../../../url/url";
+// import BASE_URL from "../../../url/url";
+import { deleteToData } from '../../../services/toService'; 
 
 interface ToListProps extends ToData {
     onDelete: (id: number) => void;
@@ -8,19 +9,33 @@ interface ToListProps extends ToData {
 }
 
 const ToList_RetrieveDelete: React.FC<ToListProps> = (props) => {
-    const deleteToData = async (id: number) => {
-        try {
-            const response = await fetch(`${BASE_URL}/shiprush/toData/${id}`, {
-                method: "DELETE",
-            });
+    // const deleteToData = async (id: number) => {
+    //     try {
+    //         const response = await fetch(`${BASE_URL}/shiprush/toData/${id}`, {
+    //             method: "DELETE",
+    //         });
 
-            if (!response.ok) {
-                throw new Error("Failed to delete.");
+    //         if (!response.ok) {
+    //             throw new Error("Failed to delete.");
+    //         }
+    //         alert("Successfully Deleted!");
+    //         props.onDelete(id); // Update the parent component's state
+    //     } catch (error) {
+    //         console.error("Error deleting card:", error);
+    //     }
+    // };
+
+    const handleDelete = async (id: number) => {
+        try {
+            const response = await deleteToData(id); // Use the service method
+            if(!response.ok){
+                throw new Error("Failed to delete.")
             }
             alert("Successfully Deleted!");
             props.onDelete(id); // Update the parent component's state
         } catch (error) {
             console.error("Error deleting card:", error);
+            alert("Failed to delete.");
         }
     };
 
@@ -73,7 +88,7 @@ const ToList_RetrieveDelete: React.FC<ToListProps> = (props) => {
                     Edit
                 </button>
                 <button
-                    onClick={() => deleteToData(props.id)}
+                    onClick={() => handleDelete(props.id)}
                     className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:bg-red-300 disabled:cursor-not-allowed"
                 >
                     Delete

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ToData from "../../data/ToData";
-import BASE_URL from "../../../url/url";
+import { createToData, updateToData } from "../../../services/toService";
 
 interface ToCreateEditProps {
     editingToData: Partial<ToData> | null;
@@ -25,7 +25,7 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingToData, setEditingTo
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-    const addToData = async () => {
+    const handleCreateToData = async () => {
         if (!newToData.company || !newToData.personName) {
             alert("Please fill in all required fields.");
             return;
@@ -34,18 +34,7 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingToData, setEditingTo
         setIsSubmitting(true);
 
         try {
-            const response = await fetch(`${BASE_URL}/shiprush/todata`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newToData)
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to add new To Data.")
-            }
-
+            await createToData(newToData); // Use the service method
             setNewToData({
                 company: "",
                 personName: "",
@@ -58,36 +47,25 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingToData, setEditingTo
                 residential: "",
                 taxId: "",
                 eoriDestination: "",
-            })
-            onDataAdded();
-        }
-        catch (error) {
-            console.error("Error adding new To Data: ", error);
-            alert("Failed to add new To Data.")
-        }
-        finally {
-            alert("Successfully added new To Data")
+            });
+            alert("Successfully added new To Data");
+            onDataAdded(); // Notify parent to refresh data
+        } catch (error) {
+            console.error("Error adding new To Data:", error);
+            alert("Failed to add new To Data.");
+        } finally {
             setIsSubmitting(false);
-
         }
-    }
+    };
 
-    const updateToData = async () => {
+    const handleUpdateToData = async () => {
         if (!editingToData || !editingToData.id) return;
 
         try {
-            const response = await fetch(`${BASE_URL}/shiprush/todata/${editingToData.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(editingToData),
-            });
-
-            if (!response.ok) throw new Error("Failed to update To Data.");
-
+            await updateToData(editingToData.id, editingToData as ToData); // Use the service method
             alert("Successfully updated To Data.");
             setEditingToData(null); // Exit edit mode
+            onDataAdded(); // Notify parent to refresh data
         } catch (error) {
             console.error("Error updating To Data:", error);
             alert("Failed to update To Data.");
@@ -121,7 +99,7 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingToData, setEditingTo
             <div className="grid grid-cols-1 gap-4 mb-2 text-left">
                 {fields.map(({ label, field, placeholder }) => (
                     <div key={field} className="flex justify-between items-center">
-                        <label className="">{label}</label>
+                        <label>{label}</label>
                         <input
                             className="w-2/3 p-2 border rounded"
                             type="text"
@@ -134,13 +112,13 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingToData, setEditingTo
                             onChange={(e) =>
                                 editingToData
                                     ? setEditingToData((prev) => ({
-                                        ...prev!,
-                                        [field]: e.target.value,
-                                    }))
+                                          ...prev!,
+                                          [field]: e.target.value,
+                                      }))
                                     : setNewToData((prev) => ({
-                                        ...prev,
-                                        [field]: e.target.value,
-                                    }))
+                                          ...prev,
+                                          [field]: e.target.value,
+                                      }))
                             }
                         />
                     </div>
@@ -148,30 +126,31 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingToData, setEditingTo
             </div>
             {editingToData && (
                 <div>
-                    <button onClick={updateToData} className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Update To Data</button>
+                    <button
+                        onClick={handleUpdateToData}
+                        className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                    >
+                        Update To Data
+                    </button>
                     <button
                         onClick={cancelEditing}
                         className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                     >
                         Cancel
-                    </button> 
-                </div>
-
-            )}
-            {
-                !editingToData && (
-                    <button
-                        onClick={addToData}
-                        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-green-300 disabled:cursor-not-allowed"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? "Adding To Data..." : "Submit"}
                     </button>
-                )
-            }
+                </div>
+            )}
+            {!editingToData && (
+                <button
+                    onClick={handleCreateToData}
+                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-green-300 disabled:cursor-not-allowed"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? "Adding To Data..." : "Submit"}
+                </button>
+            )}
         </div>
     );
 };
 
 export default ToCreateEdit;
- 
