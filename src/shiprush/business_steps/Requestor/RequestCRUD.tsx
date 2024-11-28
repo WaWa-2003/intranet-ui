@@ -10,4 +10,4 @@ const RequestCRUD: React.FC = () => {
     )
 }
 
-export default RequestCRUD
+export default RequestCRUD; 

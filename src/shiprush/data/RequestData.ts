@@ -13,7 +13,7 @@ export default interface RequestData {
   requestorId?: number; // Optional, as it could be null
   supervisorId?: number; // Optional, as it could be null
   logisticId?: number; // Optional, as it could be null
-  createdById: number;
+  createdById?: number;
   modifiedById?: number; // Optional, as it could be null
   createdDateTime: Date;
   modifiedDateTime?: Date; // Optional, as it could be null
