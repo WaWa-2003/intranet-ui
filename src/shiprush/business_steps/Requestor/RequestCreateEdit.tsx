@@ -99,7 +99,7 @@ const RequestCreateEdit: React.FC = () => {
                         ))}
                     </select>
                 </div>
-                <button type="submit">
+                <button type="submit" className="bg-green-500 text-white px-3 py-1 rounded">
                     {isSubmitting ? "Creating Request Data..." : "Submit"}
                 </button>
             </form>
