@@ -7,10 +7,10 @@ import FromCRUD from "./From/FromCRUD";
 import PackageCRUD from "./Package/PackageCRUD";
 import RequestCRUD from "../business_steps/Requestor/RequestCRUD";
 
-
 function ShipRushUIContent() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("User");
+ 
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -35,11 +35,9 @@ function ShipRushUIContent() {
 
   return (
     <div className="flex flex-col h-screen">
-      {/* Use Header Component */}
       <Header toggleSidebar={toggleSidebar} />
 
       <div className="flex flex-1">
-        {/* Sidebar */}
         <div
           className={`transition-transform duration-300 ${
             isSidebarOpen ? "w-64" : "w-16"
@@ -61,8 +59,6 @@ function ShipRushUIContent() {
             ))}
           </ul>
         </div>
-
-        {/* Main Content */}
         <div className="flex-1 p-4">{renderContent()}</div>
       </div>
     </div>

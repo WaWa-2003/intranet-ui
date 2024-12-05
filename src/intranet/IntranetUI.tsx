@@ -1,23 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from '../auth/authConfig';
-import Header from './components/Header'
-import Sidebar from './components/Sidebar'
-import MainContent from './components/MainContent'
-import PowerAppEmbed from './components/PowerappsEmbed/PowerAppEmbed'
-import { systemData } from './data/systemData'
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import MainContent from './components/MainContent';
+import PowerAppEmbed from './components/PowerappsEmbed/PowerAppEmbed';
+import { systemData } from './data/systemData';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function IntranetUI() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
 
   const [currentPage, setCurrentPage] = useState(() => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('page') || localStorage.getItem('currentPage') || 'Home';
   });
-  
+
   const updateCurrentPage = (page: string) => {
     setCurrentPage(page);
     localStorage.setItem('currentPage', page);
@@ -39,14 +41,17 @@ function IntranetUI() {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
+  useEffect(() => {
+    // Redirect if currentPage is "Shiprush Approval"
+    if (currentPage === 'Shiprush Approval') {
+      navigate('/intranet/Shiprush'); // Perform redirection
+    }
+  }, [currentPage, navigate]);
+
   const renderContent = () => {
     if (currentPage === 'Home') {
       return <MainContent setCurrentPage={updateCurrentPage} />;
     }
-
-    // if (currentPage === 'Shiprush Approval') {
-    //   return <ShiprushApproval/>
-    // }
 
     const system = systemData.find(sys => sys.title === currentPage);
     if (system && system.status) {
@@ -54,14 +59,14 @@ function IntranetUI() {
     }
 
     return <div className='p-3 font-bold'>System not implemented yet</div>;
-  }
+  };
 
   return (
     <MsalProvider instance={msalInstance}>
       <div className="flex flex-col h-screen">
-        <Header 
-          currentPage={currentPage} 
-          setCurrentPage={updateCurrentPage} 
+        <Header
+          currentPage={currentPage}
+          setCurrentPage={updateCurrentPage}
           toggleSidebar={toggleSidebar}
         />
 
@@ -71,7 +76,7 @@ function IntranetUI() {
         </div>
       </div>
     </MsalProvider>
-  )
+  );
 }
 
-export default IntranetUI
+export default IntranetUI;

@@ -1,71 +1,75 @@
-import { useState, useEffect } from 'react';
-import { getRequests, deleteRequest } from '../../../services/requestService';
+import React from "react";
+import { FaEdit, FaTrash } from "react-icons/fa"; // Importing icons
+import { deleteRequest } from "../../../services/requestService";
+import RequestData from "../../data/RequestData";
 
-const RequestList = () => {
-    const [requests, setRequests] = useState([]);
-    const [loading, setLoading] = useState(true);
+interface RequestListProps extends RequestData {
+    id: number;
+    fromCompany: string;
+    toCompany: string;
+    fromCompanyId: number;
+    toCompanyId: number; 
+    status: string;
+    onDelete: (id: number) => void;
+    startEditing: (requestData: RequestData) => void;
+}
 
-    useEffect(() => {
-        const fetchRequests = async () => {
-            try {
-                const data = await getRequests();
-                setRequests(data);
-            } catch (error) {
-                console.error('Error fetching requests:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchRequests();
-    }, []);
-
-    const handleToSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedToId(parseInt(event.target.value, 10));
-    };
-
+const RequestList_RetrieveDelete: React.FC<RequestListProps> = (props) => {
+    
     const handleDelete = async (id: number) => {
         try {
-            await deleteRequest(id);
-            setRequests((prev) => prev.filter((req) => req.id !== id));
+            const response = await deleteRequest(id);
+            if (!response.ok) {
+                throw new Error("Failed to delete.");
+            }
+            alert("Successfully Deleted!");
+            props.onDelete(id); 
         } catch (error) {
-            console.error('Error deleting request:', error);
+            console.error("Error deleting request:", error);
+            alert("Failed to delete request.");
         }
     };
 
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-
     return (
-        <div>
-            <h1>Requests</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {requests.map((request) => (
-                        <tr key={request.id}>
-                            <td>{request.id}</td>
-                            <td>{request.fromData?.company || 'N/A'}</td>
-                            <td>{request.toData?.company || 'N/A'}</td>
-                            <td>{request.status || 'Pending'}</td>
-                            <td>
-                                <button onClick={() => handleDelete(request.id)}>Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="Request--list border p-4 rounded-lg shadow-md bg-white">
+            <p>
+                <span className="font-bold">ID: </span> {props.id}
+            </p>
+            <p>
+                <span className="font-bold">From Company: </span> {props.fromCompany} ({props.fromCompanyId})
+            </p>
+            <p>
+                <span className="font-bold">To Company: </span> {props.toCompany}
+            </p>
+            <p>
+                <span className="font-bold">Requestor: </span> {props.createdByEmail}
+            </p>
+
+            <p>
+                <span className="font-bold">Status: </span> {props.status}
+            </p>
+            <p>
+                <span className="font-bold">Status: </span> {props.status}
+            </p> 
+            
+            <div className="flex gap-2 mt-2 justify-start"> 
+                <button
+                    onClick={() => props.startEditing(props)}
+                    className="flex items-center px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 disabled:bg-yellow-300 disabled:cursor-not-allowed"
+                >
+                    <FaEdit /> 
+                    
+                </button>
+                <button
+                    onClick={() => handleDelete(props.id)}
+                    className="flex items-center px-2 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:bg-red-300 disabled:cursor-not-allowed"
+                >
+                    <FaTrash /> 
+                    
+                </button>
+            </div>
         </div>
     );
 };
 
-export default RequestList;
+export default RequestList_RetrieveDelete;

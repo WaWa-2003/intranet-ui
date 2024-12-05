@@ -14,10 +14,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/intranet" />} />
-        <Route path="/intranet/*" element={<IntranetUI />} />
+        <Route path="/intranet/" element={<IntranetUI />} />
         <Route path="/intranet-systems-data/*" element={<CardManager />} />
         <Route path="/intranet-systems-data/create" element={<CardCreate />} />
         <Route path="/intranet-systems" element={<CardAllShow />} />
+        <Route path="intranet/Shiprush/" element={<ShipRushUI />} />
         <Route path="/Shiprush/" element={<ShipRushUI />} />
         <Route path="/Shiprush/from/" element={<FromCRUD />} />
         <Route path="/Shiprush/to/" element={<ToCRUD />} />

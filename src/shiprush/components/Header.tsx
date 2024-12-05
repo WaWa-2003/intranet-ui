@@ -3,16 +3,11 @@ import { useMsal, useAccount } from "@azure/msal-react";
 import { EventType } from "@azure/msal-browser";
 import { loginRequest } from "../../auth/authConfig";
 import { callMsGraph } from "../../auth/graph";
+import { UserInfo } from "../../auth/UserInfoContext";
+// C:\Code\React\xenoptics-intranet\intranet-ui\src\auth\UserInfoContext.tsx
 
 interface HeaderProps {
     toggleSidebar: () => void;
-}
-
-interface UserInfo {
-    displayName: string;
-    jobTitle: string;
-    mail: string;
-    id: string;
 }
 
 const Header = ({ toggleSidebar }: HeaderProps) => {
@@ -88,20 +83,18 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
             <div className="flex items-center">
                 {accounts.length > 0 && userInfo ? (
                     <div className="flex items-center">
-                        <div className="mr-4 text-right">
-                            <div className="font-semibold">{userInfo.displayName}</div>
-                            <div className="text-sm">{userInfo.jobTitle}</div>
-                            <div className="text-sm">{userInfo.mail}</div>
-                            {/* <div className="text-sm">id: {userInfo.id}</div> 
+                        <span className="mr-4">Welcome, {userInfo.displayName}</span>
+                        <div className="text-sm">{userInfo.mail}</div>
+                        {/* <div className="text-sm">id: {userInfo.id}</div> 
                             {userInfo && (
                                 <pre className="bg-gray-200 text-black p-4 rounded">
                                     {JSON.stringify(userInfo, null, 2)}
                                 </pre>
                             )} */}
-                        </div>
+
                         <button
                             onClick={handleLogout}
-                            className="bg-red-600 px-3 py-1 rounded"
+                            className="bg-red-600 px-3 py-1 rounded text-white"
                         >
                             Logout
                         </button>

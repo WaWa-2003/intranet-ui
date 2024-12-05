@@ -129,18 +129,45 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingPackageData, setEdit
             <h1 className="text-xl font-bold mb-5">
                 {editingPackageData ? "Edit To Data" : "Create New To Data"}
             </h1>
-    
+
             <div className="grid grid-cols-1 gap-4 mb-2 text-left">
                 {fields.map(({ label, field, placeholder, isUnit }) => (
                     <div key={field} className="flex justify-between items-center">
                         <label>{label}</label>
                         {isUnit ? (
+                            // <select
+                            //     className="w-2/3 p-2 border rounded"
+                            //     value={
+                            //         editingPackageData
+                            //             ? editingPackageData[field as keyof PackageData] || ""
+                            //             : newPackageData[field]
+                            //     }
+                            //     onChange={(e) =>
+                            //         editingPackageData
+                            //             ? setEditingPackageData((prev) => ({
+                            //                 ...prev!,
+                            //                 [field]: e.target.value,
+                            //             }))
+                            //             : setNewPackageData((prev) => ({
+                            //                 ...prev,
+                            //                 [field]: e.target.value,
+                            //             }))
+                            //     }
+                            // >
+                            //     <option value="" disabled>Select unit</option>
+                            //     {unitOptions.map((unit) => (
+                            //         <option key={unit} value={unit}>
+                            //             {unit}
+                            //         </option>
+                            //     ))}
+                            // </select>
+
                             <select
                                 className="w-2/3 p-2 border rounded"
                                 value={
-                                    editingPackageData
-                                        ? editingPackageData[field as keyof PackageData] || ""
-                                        : newPackageData[field]
+                                    (editingPackageData
+                                        ? editingPackageData[field as keyof PackageData]
+                                        : newPackageData[field]) as string | number | undefined
                                 }
                                 onChange={(e) =>
                                     editingPackageData
@@ -161,15 +188,39 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingPackageData, setEdit
                                     </option>
                                 ))}
                             </select>
+
+
+
                         ) : (
+                            // <input
+                            //     className="w-2/3 p-2 border rounded"
+                            //     type="text"
+                            //     placeholder={placeholder}
+                            //     value={
+                            //         editingPackageData
+                            //             ? editingPackageData[field as keyof PackageData] || ""
+                            //             : newPackageData[field]
+                            //     }
+                            //     onChange={(e) =>
+                            //         editingPackageData
+                            //             ? setEditingPackageData((prev) => ({
+                            //                 ...prev!,
+                            //                 [field]: e.target.value,
+                            //             }))
+                            //             : setNewPackageData((prev) => ({
+                            //                 ...prev,
+                            //                 [field]: e.target.value,
+                            //             }))
+                            //     }
+                            // />
                             <input
                                 className="w-2/3 p-2 border rounded"
                                 type="text"
                                 placeholder={placeholder}
                                 value={
-                                    editingPackageData
-                                        ? editingPackageData[field as keyof PackageData] || ""
-                                        : newPackageData[field]
+                                    (editingPackageData
+                                        ? (editingPackageData[field as keyof Omit<PackageData,"id"> ] as string | number | undefined)
+                                        : (newPackageData[field as keyof Omit<PackageData,"id"> ] as string | number | undefined)) || ""
                                 }
                                 onChange={(e) =>
                                     editingPackageData
@@ -183,6 +234,7 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingPackageData, setEdit
                                         }))
                                 }
                             />
+
                         )}
                     </div>
                 ))}
@@ -216,4 +268,3 @@ const ToCreateEdit: React.FC<ToCreateEditProps> = ({ editingPackageData, setEdit
 };
 
 export default ToCreateEdit;
- 

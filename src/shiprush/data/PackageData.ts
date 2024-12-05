@@ -1,5 +1,9 @@
+import RequestData from "./RequestData";
+
 export default interface PackageData {
-    id: number; // Primary key for the "package" table
+    id: number;
+    requestId?: number; // Mark as optional
+    requestData?: RequestData; // Mark as optional
     packaging: string;
     weight: number;
     weightUnitType: string;
