@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { useNavigate } from 'react-router-dom';
 import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from '../auth/authConfig';
@@ -8,19 +8,20 @@ import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import PowerAppEmbed from './components/PowerappsEmbed/PowerAppEmbed';
 import { systemData } from './data/systemData';
+import ShipRushUI from '../shiprush/ShiprushUI';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
 function IntranetUI() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(() => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('page') || localStorage.getItem('currentPage') || 'Home';
   });
 
-  const updateCurrentPage = (page: string) => {
+  const updateCurrentPage = (page) => {
     setCurrentPage(page);
     localStorage.setItem('currentPage', page);
     const url = new URL(window.location.href);
@@ -40,13 +41,6 @@ function IntranetUI() {
   }, []);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
-  useEffect(() => {
-    // Redirect if currentPage is "Shiprush Approval"
-    if (currentPage === 'Shiprush Approval') {
-      navigate('/intranet/Shiprush'); // Perform redirection
-    }
-  }, [currentPage, navigate]);
 
   const renderContent = () => {
     if (currentPage === 'Home') {
@@ -72,7 +66,7 @@ function IntranetUI() {
 
         <div className="flex flex-1">
           {isSidebarOpen && <Sidebar setCurrentPage={updateCurrentPage} currentPage={currentPage} />}
-          {renderContent()}
+          {currentPage === 'Shiprush Approval' ? <ShipRushUI /> : renderContent()}
         </div>
       </div>
     </MsalProvider>

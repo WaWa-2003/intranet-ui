@@ -85,13 +85,7 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
                     <div className="flex items-center">
                         <span className="mr-4">Welcome, {userInfo.displayName}</span>
                         <div className="text-sm">{userInfo.mail}</div>
-                        {/* <div className="text-sm">id: {userInfo.id}</div> 
-                            {userInfo && (
-                                <pre className="bg-gray-200 text-black p-4 rounded">
-                                    {JSON.stringify(userInfo, null, 2)}
-                                </pre>
-                            )} */}
-
+     
                         <button
                             onClick={handleLogout}
                             className="bg-red-600 px-3 py-1 rounded text-white"
